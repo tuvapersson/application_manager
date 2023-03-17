@@ -43,7 +43,7 @@ class AppsDatabase extends Database
     // Create one by creating a query and using the inherited $this->conn 
     public function insert(AppModel $app)
     {
-        $query = "INSERT INTO apps (app_name, description) VALUES (?, ?)";
+        $query = "INSERT INTO apps (app_name, description, price) VALUES (?, ?, ?)";
 
         $stmt = $this->conn->prepare($query);
 
@@ -61,7 +61,7 @@ class AppsDatabase extends Database
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("ssi", $app->app_name, $app->description, $app->price, $app_id);
+        $stmt->bind_param("ssii", $app->app_name, $app->description, $app->price, $app_id);
 
         $success = $stmt->execute();
 

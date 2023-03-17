@@ -33,7 +33,7 @@ class UsersDatabase extends Database
 
         $users = [];
 
-        while ($user = $result->fetch_object("CustomerModel")) {
+        while ($user = $result->fetch_object("UserModel")) {
             $users[] = $user;
         }
 

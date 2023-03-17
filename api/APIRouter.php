@@ -5,6 +5,7 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
     die('This file cannot be accessed directly.');
 }
 
+require_once __DIR__ . "/UsersAPI.php";
 require_once __DIR__ . "/AppsAPI.php";
 
 // Class for routing all our API requests
@@ -21,7 +22,8 @@ class APIRouter{
         $this->routes = [
             // Whenever someone calls "api/Customers" we 
             // will load the CustomersAPI class
-            "customers" => "CustomersAPI"
+            "users" => "UsersAPI",
+            "apps" => "AppsAPI"
         ];
 
         $this->path_parts = $path_parts;

@@ -17,11 +17,8 @@ class APIRouter{
 
     public function __construct($path_parts, $query_params)
     {
-        // Available routes
-        // Add to this if you need to add any route to the API
         $this->routes = [
-            // Whenever someone calls "api/Customers" we 
-            // will load the CustomersAPI class
+            // Whenever we call "api/users", load the UsersAPI class
             "users" => "UsersAPI",
             "apps" => "AppsAPI"
         ];
@@ -32,7 +29,7 @@ class APIRouter{
 
     public function handleRequest(){
 
-        // Get the requested resource from the URL such as "Customers" or "Products"
+        // Get the requested resource from the URL such as "Users" or "Apps"
         $resource = strtolower($this->path_parts[1]);
 
         // Cet the class specified in the routes

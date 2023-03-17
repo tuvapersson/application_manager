@@ -28,12 +28,8 @@ class Database
         }
     }
 
-    // Retrieves all rows from the specified 
-    // table in the database and returns the result.
     protected function getAllRowsFromTable($table_name)
     {
-        // Variables inside the query are OK when the variables are not user input.
-        // Never use variables directly in queries when the variables value is user input.
         $query = "SELECT * FROM {$table_name}";
 
         $stmt = $this->conn->prepare($query);
@@ -45,14 +41,8 @@ class Database
         return $result;
     }
 
-    // Retrieves one from the specified 
-    // table in the database and returns the result.
     protected function getOneRowByIdFromTable($table_name, $id_name, $id)
     {
-        // Variables inside the query are OK when the variables are not user input.
-        // Never use variables directly in queries when the variables value is user input.
-        // This includes data from the database that could come from a user
-        // Only use hard coded values OR white listed values directly in queries
         $query = "SELECT * FROM {$table_name} WHERE {$id_name} = ?";
 
         $stmt = $this->conn->prepare($query);
@@ -66,14 +56,8 @@ class Database
         return $result;
     }
 
-    // Deletes one row from the specified 
-    // table in the database.
     protected function deleteOneRowByIdFromTable($table_name, $id_name, $id)
     {
-        // Variables inside the query are OK when the variables are not user input.
-        // Never use variables directly in queries when the variables value is user input.
-        // This includes data from the database that could come from a user
-        // Only use hard coded values OR white listed values directly in queries
         $query = "DELETE FROM {$table_name} WHERE {$id_name} = ?";
 
         $stmt = $this->conn->prepare($query);

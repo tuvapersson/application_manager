@@ -19,7 +19,7 @@ if($base_path == "api" && count($path_parts) > 1){
     $api = new APIRouter($path_parts, $query_params);
     $api->handleRequest();
 }
-else{ // If URL path is not API, respond with "not found"
+else{ // If URL path is not API
     http_response_code(404);
     die("Page not found");
 }

@@ -18,43 +18,30 @@ class UsersAPI extends RestAPI
     {
 
         
-        // If theres two parts in the path and the request method is GET 
-        // it means that the client is requesting "api/Customers" and
-        // we should respond by returning a list of all customers 
+        //GET /api/users
         if ($this->method == "GET" && $this->path_count == 2) {
             $this->getAll();
         } 
 
-        // If there's three parts in the path and the request method is GET
-        // it means that the client is requesting "api/Customers/{something}".
-        // In our API the last part ({something}) should contain the ID of a 
-        // customer and we should respond with the customer of that ID
+        //GET /api/users/1
         else if ($this->path_count == 3 && $this->method == "GET") {
             $this->getById($this->path_parts[2]);
         }
 
-        // If theres two parts in the path and the request method is POST 
-        // it means that the client is requesting "api/Customers" and we
-        // should get ths contents of the body and create a customer.
+        //POST /api/users
         else if ($this->path_count == 2 && $this->method == "POST") {
             $this->postOne();
         }
 
-        // If theres two parts in the path and the request method is PUT 
-        // it means that the client is requesting "api/Customers/{something}" and we
-        // should get the contents of the body and update the customer.
+        //PUT /api/users/1
         else if ($this->path_count == 3 && $this->method == "PUT") {
             $this->putOne($this->path_parts[2]);
         } 
 
-        // If theres two parts in the path and the request method is DELETE 
-        // it means that the client is requesting "api/Customers/{something}" and we
-        // should get the ID from the URL and delete that customer.
+        //DELETE /api/users/1
         else if ($this->path_count == 3 && $this->method == "DELETE") {
             $this->deleteOne($this->path_parts[2]);
         } 
-        
-        // If none of our ifs are true, we should respond with "not found"
         else {
             $this->notFound();
         }
